@@ -1,7 +1,7 @@
 # Project Goal
 
 A startup called Sparkify wants to analyze the data they've been collecting on songs and user activity on their new music streaming app. The analytics team is particularly interested in understanding what songs users are listening to. Currently, they don't have an easy way to query their data, which resides in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
-They'd like a data engineer to create a Postgres database with tables designed to optimize queries on song play analysis, and bring you on the project. Your role is to create a database schema and ETL pipeline for this analysis. You'll be able to test your database and ETL pipeline by running queries given to you by the analytics team from Sparkify and compare your results with their expected results.
+They'd like a data engineer to create a Postgres database with tables designed to optimize queries on song play analysis. My job is to create a database schema and ETL pipeline for this analysis, test the database and ETL pipeline by running queries by the analytics team from Sparkify and compare results with their expected results.
 
 # Project Description
 
@@ -74,15 +74,7 @@ In the ETL Pipeline, we load the json files from song_data and log_data and put 
 songplay and dimension tables users, songs, artists and time. We convert ts column where we have our start_time as timestamp in millisencs to datetime format. We obtain the parameters we need from this date (day, hour, week, etc), and insert everythin into our time dimentional table. Finally we lookup song and artist id from their tables by song name, artist name and song duration that we have on our song play data.Then we end by inserting everything we need into our songplay fact table.
 
 
-Document Process
-Do the following steps in your README.md file.
-
-Discuss the purpose of this database in the context of the startup, Sparkify, and their analytical goals.
-State and justify your database schema design and ETL pipeline.
-[Optional] Provide example queries https://www.markdownguide.org/basic-syntax/
-Markdown Syntax.
-
-NOTE: You will not be able to run test.ipynb, etl.ipynb, or etl.py until you have run create_tables.py at least once to create the sparkifydb database, which these other files connect to.
+NOTE: will not be able to run test.ipynb, etl.ipynb, or etl.py until you have run create_tables.py at least once to create the sparkifydb database, which these other files connect to.
 
 # Procedure
 
@@ -94,11 +86,3 @@ Run test.ipynb to verify test data
 Then fill in etl.py program
 Run etl in console by python etl.py
 Run test.ipynb to query 
-
-
-
-
-
-
-
-
