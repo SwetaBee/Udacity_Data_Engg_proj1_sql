@@ -28,7 +28,7 @@ And below is an example of what the data in a log file, 2018-11-12-events.json:
 {"artist":"Slipknot","auth":"LoggedIn","firstName":"Aiden","gender":"M","itemInSession":0,"lastName":"Ramirez","length":192.57424,"level":"paid","location":"New York-Newark-Jersey City, NY-NJ PA","method":"PUT","page":"NextSong","registration":1540283578796.0,"sessionId":19,"song":"Opium Of The People (Album Version)","status":200,"ts":1541639510796,"userAgent":"\"Mozilla\/5.0 (Windows NT 6.1) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/36.0.1985.143 Safari\/537.36\"","userId":"20"}
 
 # Database Schema
-Using the song and log datasets, I created a star schema optimized for queries on song play analysis. This includes the following tables:
+Using the song and log datasets, you'll need to create a star schema optimized for queries on song play analysis. This includes the following tables:
 
 Fact Table
 songplays - records in log data associated with song plays i.e. records with page NextSong > songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
@@ -42,15 +42,15 @@ time - timestamps of records in songplays broken down in specific units > start_
 
 # Data files
 
-test.ipynb displays the first few rows of each table and check the database.
+test.ipynb displays the first few rows of each table to let you check your database.
 
-create_tables.py drops and creates the tables. This file will reset the tables before each time ETL scripts are executed
+create_tables.py drops and creates your tables. You run this file to reset your tables before each time you run your ETL scripts.
 
-etl.ipynb reads and processes a single file from song_data and log_data and loads the data into the tables. 
+etl.ipynb reads and processes a single file from song_data and log_data and loads the data into your tables. This notebook contains detailed instructions on the ETL process for each of the tables.
 
-etl.py reads and processes files from song_data and log_data and loads them into the tables. 
+etl.py reads and processes files from song_data and log_data and loads them into your tables. You can fill this out based on your work in the ETL notebook.
 
-sql_queries.py contains all sql queries, and is imported into the last three files above.
+sql_queries.py contains all your sql queries, and is imported into the last three files above.
 
 README.md provides discussion on your project.
 
@@ -60,22 +60,29 @@ README.md provides discussion on your project.
 Create Tables
 Write CREATE statements in sql_queries.py to create each table.
 Write DROP statements in sql_queries.py to drop each table if it exists.
-Run create_tables.py to create the database and tables.
-Run test.ipynb to confirm the creation of the tables with the correct columns. 
+Run create_tables.py to create your database and tables.
+Run test.ipynb to confirm the creation of your tables with the correct columns. 
 ***Make sure to click "Restart kernel" to close the connection to the database after running this notebook.
 
 Build ETL Processes
-Follow instructions in the etl.ipynb notebook to develop ETL processes for each table. At the end of each table section, or at the end of the notebook, run test.ipynb to confirm that records were successfully inserted into each table. Remember to rerun create_tables.py to reset the tables before each this notebook is executed
+Follow instructions in the etl.ipynb notebook to develop ETL processes for each table. At the end of each table section, or at the end of the notebook, run test.ipynb to confirm that records were successfully inserted into each table. Remember to rerun create_tables.py to reset your tables before each time you run this notebook.
 
 Build ETL Pipeline
-Use what has been completed in etl.ipynb to complete etl.py, where the entire dataset is processed. Remember to run create_tables.py before running etl.py to reset the tables. Run test.ipynb to confirm the records were successfully inserted into each table.
+Use what you've completed in etl.ipynb to complete etl.py, where you'll process the entire datasets. Remember to run create_tables.py before running etl.py to reset your tables. Run test.ipynb to confirm your records were successfully inserted into each table.
 
 In the ETL Pipeline, we load the json files from song_data and log_data and put it in a dataframe.Then we select the columns from the dataframe and put it in a list as an input to the tables created. We do this step for the fact table 
-
 songplay and dimension tables users, songs, artists and time. We convert ts column where we have our start_time as timestamp in millisencs to datetime format. We obtain the parameters we need from this date (day, hour, week, etc), and insert everythin into our time dimentional table. Finally we lookup song and artist id from their tables by song name, artist name and song duration that we have on our song play data.Then we end by inserting everything we need into our songplay fact table.
 
 
-NOTE: will not be able to run test.ipynb, etl.ipynb, or etl.py until you have run create_tables.py at least once to create the sparkifydb database, which these other files connect to.
+Document Process
+Do the following steps in your README.md file.
+
+Discuss the purpose of this database in the context of the startup, Sparkify, and their analytical goals.
+State and justify your database schema design and ETL pipeline.
+[Optional] Provide example queries https://www.markdownguide.org/basic-syntax/
+Markdown Syntax.
+
+NOTE: You will not be able to run test.ipynb, etl.ipynb, or etl.py until you have run create_tables.py at least once to create the sparkifydb database, which these other files connect to.
 
 # Procedure
 
